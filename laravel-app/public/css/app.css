@@ -1,0 +1,82 @@
+.body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 1em;
+    width: 1512px;
+    height: 80px;
+
+}
+
+.header-bar {
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    padding: 30px 20px;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 40px;
+}
+
+.search-input {
+    flex: 1;
+    width: 600px;
+    margin: 0 20px;
+    padding: 12px;
+    font-size: 24px;
+    border-radius: 6px;
+}
+
+.header-links {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 15px;
+    font-size: 24px;
+}
+
+.header-links a {
+    color: #FFFFFF;
+    white-space: nowrap;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.post-button {
+    white-space: nowrap;
+    flex-shrink: 0;
+    background-color: #FFFFFF;
+    color: #000000 !important;
+    font-size: 24px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.logout-button {
+    background: none;
+        border: none;
+        color: #FFFFFF;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0;
+        text-decoration: none;
+        white-space: nowrap;
+        margin-left: 15px;
+    }

@@ -1,0 +1,101 @@
+.sell-page {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: sans-serif;
+}
+
+.image-upload-area {
+    margin-bottom: 24px;
+}
+
+.dashed-box {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    background-color: white;
+}
+
+h3 {
+    font-size: 20px;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    color: #5F5F5F;
+    border-bottom: 1px solid #5F5F5F;
+}
+
+.select-image-button {
+    border: 1px solid #FF5555;
+    background-color: white;
+    color: #FF5555;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.category-buttons button {
+    background-color: white;
+    border: 1px solid #FF5555;
+    color: #FF5555;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+.form-main {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-main .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-main label {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.form-main input,
+.form-main textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.form-main textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-button {
+    margin-top: 24px;
+    background-color: #FF5555;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
