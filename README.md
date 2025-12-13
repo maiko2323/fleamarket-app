@@ -41,6 +41,7 @@ MAIL_FROM_ADDRESS = no-reply@example.com
 ### 開発環境
 
 [商品一覧(トップページ)](http://localhost:8083/)
+
 [商品一覧(トップページ_マイリスト)](http://localhost:8083/?tab=mylist)
 [会員登録](http://localhost:8083/register)
 [ログイン](http://localhost:8083/login)
