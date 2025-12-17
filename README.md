@@ -70,6 +70,6 @@ jQuery 3.7.1
 
 ## ER図
 
-![ER図](docs/er.png)
+![ER図](laravel-app/docs/er.png)
 
 
