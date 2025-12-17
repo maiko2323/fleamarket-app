@@ -31,9 +31,13 @@ php artisan storage:link
 "環境変数の変更"について.env
 
 DB_HOST = mysql
+
 DB_DATABASE = fleamarket
+
 DB_USERNAME = root
+
 DB_PASSWORD = rootpassword
+
 MAIL_FROM_ADDRESS = no-reply@example.com
 に変更
 
