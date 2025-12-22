@@ -12,8 +12,7 @@ cd fleamarket-app
 docker-compose up -d --build
 ```
 
-
-### Laravel環境構築
+### Laravel 環境構築
 
 ```bash
 docker-compose exec php bash
@@ -30,23 +29,31 @@ php artisan storage:link
 
 "環境変数の変更"について.env
 
-DB_HOST = mysql
+#### データベース設定
 
-DB_DATABASE = fleamarket
+DB_HOST=mysql
+DB_DATABASE=fleamarket
+DB_USERNAME=root
+DB_PASSWORD=rootpassword
 
-DB_USERNAME = root
+#### メール設定（Mailhog）
 
-DB_PASSWORD = rootpassword
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_FROM_ADDRESS=no-reply@example.com
+MAIL_FROM_NAME="FleaMarket App"
 
-MAIL_FROM_ADDRESS = no-reply@example.com
-に変更
+#### Stripe（テスト環境）
 
+STRIPE_KEY=Stripe の公開可能キー
+STRIPE_SECRET=Stripe の公開可能キー
 
 ### 開発環境
 
 [商品一覧(トップページ)](http://localhost:8083/)
 
-[商品一覧(トップページ_マイリスト)](http://localhost:8083/?tab=mylist)
+[商品一覧(トップページ\_マイリスト)](http://localhost:8083/?tab=mylist)
 
 [会員登録](http://localhost:8083/register)
 
@@ -70,8 +77,7 @@ MAIL_FROM_ADDRESS = no-reply@example.com
 
 [phpMyAdmin](http://localhost:8084/)
 
-
-
+[MAILHOG]=(http://localhost:8025/)
 
 ## 仕様技術（実行環境）
 
@@ -87,10 +93,6 @@ Docker 28.3.2 / docker-compose 2.39.1
 
 jQuery 3.7.1
 
-
-
-## ER図
+## ER 図
 
 ![ER図](laravel-app/docs/er.png)
-
-
