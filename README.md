@@ -32,21 +32,29 @@ php artisan storage:link
 #### データベース設定
 
 DB_HOST=mysql
+
 DB_DATABASE=fleamarket
+
 DB_USERNAME=root
+
 DB_PASSWORD=rootpassword
 
 #### メール設定（Mailhog）
 
 MAIL_MAILER=smtp
+
 MAIL_HOST=mailhog
+
 MAIL_PORT=1025
+
 MAIL_FROM_ADDRESS=no-reply@example.com
+
 MAIL_FROM_NAME="FleaMarket App"
 
 #### Stripe（テスト環境）
 
 STRIPE_KEY=Stripe の公開可能キー
+
 STRIPE_SECRET=Stripe の公開可能キー
 
 ### 開発環境
@@ -77,7 +85,7 @@ STRIPE_SECRET=Stripe の公開可能キー
 
 [phpMyAdmin](http://localhost:8084/)
 
-[MAILHOG]=(http://localhost:8025/)
+[MAILHOG](http://localhost:8025/)
 
 ## 仕様技術（実行環境）
 
