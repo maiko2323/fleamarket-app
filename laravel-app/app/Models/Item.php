@@ -33,7 +33,7 @@ class Item extends Model
 
     public function likes()
     {
-        return $this->belongsToMany(User::class, 'likes');
+        return $this->belongsToMany(User::class, 'likes', 'item_id', 'user_id');
     }
 
 

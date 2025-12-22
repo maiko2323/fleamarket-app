@@ -1,24 +1,24 @@
 .item-header {
     display: flex;
-    gap: 80px;
+    gap: 96px;
     align-items: flex-start;
-    margin-bottom: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .item-image {
-    flex: 0 0 400px;
+    flex: 0 0 550px;
 }
 
 .item-image img{
     width: 100%;
     height: auto;
-    border-radius: 8px;
     object-fit: cover;
 }
 
 .item-info {
     flex: 1;
-    width: 100%;
+    max-width: 520px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -30,10 +30,10 @@
 }
 
 .item-detail {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 40px;
-    font-family: sans-serif;
+    max-width: 1540px;
+    min-width: 1400px;
+    margin: 80px auto 0;
+    padding: 40px 24px;
 }
 
 .brand {
@@ -73,13 +73,47 @@
     font-size: 18px;
 }
 
+
+.comment-block {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    margin: 12px 0;
+}
+
+.comment-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 40px;
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px
+}
+
+.comment-form-title {
+    margin-top: 24px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .item-comments textarea {
     width: 100%;
-    height: 120px;
+    height: 200px;
     margin-top: 12px;
     font-size: 24px;
     resize: vertical;
     box-sizing: border-box
+}
+
+.error-message {
+    color: #FF5555;
+
 }
 
 .item-comments button {
@@ -144,5 +178,15 @@
     border: none;
     padding: 0;
     cursor: pointer;
+}
+
+.soldout-badge {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 180px !important;
+    height: auto !important;
+    object-fit: cover;
+    z-index: 10;
 }
 

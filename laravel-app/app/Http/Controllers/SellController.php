@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class SellController extends Controller
 {
-    public function create()
-{
-    return view('sell.create'); // resources/views/sell/create.blade.php
-}
+        public function create()
+    {
+        $categories = Category::all();
+        return view('sell.sell', compact('categories'));
+    }
 
-public function store(Request $request)
-{
+    public function store(Request $request)
+    {
+        return redirect()->route('listing.complete');
+    }
 
-    return redirect()->route('listing.complete'); // 
-}
 
 }

@@ -11,6 +11,13 @@
     <div class="item-header">
         <div class="item-image">
             <img src="{{ asset($item->item_img) }}" alt="{{ $item->name }}">
+
+            @if($item->soldItem)
+                <img src="{{ asset('images/soldout.png') }}"
+                alt="soldout"
+                class="soldout-badge">
+            @endif
+
         </div>
 
         <div class="item-info">
@@ -39,7 +46,7 @@
                 </div>
             </div>
 
-            <a href="{{ route('purchase', ['item_id' => $item->id]) }}" class="purchase-button">購入手続きへ</a>
+            <a href="{{ route('purchase.show', ['item_id' => $item->id]) }}" class="purchase-button">購入手続きへ</a>
 
             <div class="item-description">
                 <h3>商品説明</h3>
@@ -59,18 +66,30 @@
             </div>
 
             <div class="item-comments">
-                <h3>商品へのコメント ({{ $item->comments->count() }})</h3>
+                <h3>コメント ({{ $item->comments->count() }})</h3>
                 @foreach ($item->comments as $comment)
-                    <p><strong>{{ $comment->user->name }}</strong>: {{ $comment->content }}</p>
+                    <div class="comment-block">
+                        <img src="{{ $comment->user->profile->image_url }}" alt="ユーザーアイコン" class="comment-icon">
+                        <div class="comment-content">
+                            <strong>{{ $comment->user->name }}</strong><br>
+                            <span>{{ $comment->content }}</span>
+                        </div>
+                    </div>
                 @endforeach
 
-                @auth
+                <h4 class="comment-form-title">商品へのコメント</h4>
+
                 <form method="POST" action="{{ route('comment.store', ['item' => $item->id]) }}">
                     @csrf
-                    <textarea name="content" placeholder="商品へのコメント"></textarea>
+                    <textarea name="content"></textarea>
+
+                    @error('content')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
+
                     <button type="submit">コメントを送信する</button>
                 </form>
-                @endauth
+
             </div>
         </div>
     </div>

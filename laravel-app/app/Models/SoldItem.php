@@ -9,6 +9,19 @@ class SoldItem extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'item_id',
+        'buyer_id',
+        'payment_method',
+        'post_code',
+        'address',
+        'building_name',
+        'sold_at',
+    ];
+
+
     public function buyer()
 {
     return $this->belongsTo(User::class, 'buyer_id');

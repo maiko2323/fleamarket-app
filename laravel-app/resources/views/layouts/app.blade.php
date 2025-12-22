@@ -14,7 +14,14 @@
         </a>
 
         @if (!Request::is('login') && !Request::is('register') && !Request::is('verify'))
-        <input type="text" placeholder="なにをお探しですか？" class="search-input">
+
+            <form action="{{ route('top') }}" method="GET" class="search-form">
+                <input type="text" name="keyword"
+                    value="{{ request('keyword') }}"
+                    placeholder="なにをお探しですか？"
+                    class="search-input">
+            </form>
+
 
             <div class="header-links">
                 @if(Auth::check())

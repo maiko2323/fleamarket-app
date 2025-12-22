@@ -52,3 +52,8 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+.error-message {
+    color: #FF5555;
+
+}

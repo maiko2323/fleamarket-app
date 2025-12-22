@@ -11,19 +11,20 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+
     public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/mypage');
+            $user = Auth::user();
+
+            if (! $user->hasVerifiedEmail()) {
+                return redirect()->route('verification.notice');
+            }
+
+            return redirect()->intended();
         }
 
-
-        return back()->withErrors([
-            'email' => 'ログイン情報が登録されていません',
-        ])->withInput();
     }
-
-
 }

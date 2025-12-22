@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Item;
 
 
@@ -36,6 +37,11 @@ class ItemController extends Controller
         return back();
     }
 
+    public function likes()
+    {
+    return $this->belongsToMany(User::class, 'likes', 'item_id', 'user_id');
+    }
+
     public function mylist()
     {
         $items = auth()->user()->likedItems()->with('brand')->get();
@@ -55,4 +61,32 @@ class ItemController extends Controller
 
         return back();
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'item_img' => 'required|image|max:2048',
+            'name' => 'required|string|max:255',
+            'categories' => 'required|array',
+        ]);
+
+        $path = $request->file('item_img')->store('public/item_images');
+
+        $item = new Item();
+        $item->name = $request->name;
+        $item->brand = $request->brand;
+        $item->description = $request->description;
+        $item->price = $request->price;
+        $item->condition_id = $request->condition;
+        $item->item_img = Storage::url($path);
+        $item->user_id = auth()->id();
+        $item->save();
+
+        if ($request->has('categories')) {
+        $item->categories()->sync($request->categories);
+        }
+
+        return redirect()->route('mypage', ['page' => 'sell']);
+    }
+
 }

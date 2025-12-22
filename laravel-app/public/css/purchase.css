@@ -1,4 +1,8 @@
 .purchase-layout {
+    max-width: 1440px;
+    margin: 40px auto 0;
+    padding: 0 32px;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -23,11 +27,9 @@
 .item-section img {
     margin-top: 60px;
     width: 200px;
-    border-radius: 8px;
     margin-bottom: 16px;
     height: auto;
     object-fit: cover;
-    border-radius: 8px;
 }
 
 .item-info {
@@ -53,30 +55,31 @@ font-size: 16px;
     flex-direction: column;
     align-items: flex-start;
     border-top: 1px solid #000000;
-    padding-top: 12px;
+    padding-top: 32px;
+    padding-bottom: 32px;
     margin-top: 16px;
     gap: 36px;
 }
 
 .address-section {
     display: flex;
-    border-top: 1px solid #000000;
     border-bottom: 1px solid #000000;
     flex-direction: column;
     gap: 16px;
-    margin-top: 32px;
-    margin-bottom: 32px;
-    padding: 16px;
-}
-
-.address-section input{
-    margin-bottom: 8px;
+    padding-top: 24px;
+    padding-bottom: 32px;
 }
 
 .address-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.address-display p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 .change-button {
@@ -111,10 +114,10 @@ font-size: 16px;
 }
 
 .summary-divider {
+    border: none;
     border-top: 1px solid #000000;
-    width: 60%;
+    width: 100%;
     margin: 12px auto;
-    border:none;
 }
 
 .full-divider {
@@ -125,12 +128,7 @@ font-size: 16px;
 }
 
 .summary-wrapper {
-    flex: 1;
-    border: none;
-    width: 20%;
-    margin: 12px auto;
-    margin-right: 48px;
-    margin-left: 60px;
+    flex: 0 0 360px;
 }
 
 .summary-row {

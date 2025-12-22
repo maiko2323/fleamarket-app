@@ -18,25 +18,33 @@
             </div>
         </div>
 
-        <div class="payment-section">
-            <label for="payment">支払い方法</label>
-            <select id="payment" name="payment">
-                <option value="">選択してください</option>
-                <option value="convenience">コンビニ払い</option>
-                <option value="credit">クレジットカード</option>
-            </select>
-        </div>
+        <form id="purchase-form" action="{{ route('purchase.complete', ['item_id' => $item->id]) }}" method="POST">
+            @csrf
 
-        <hr class="summary-divider">
-
-        <div class="address-section">
-            <div class="address-header">
-                <label for="address">配送先</label>
-                <a href="{{ route('purchase.address', ['item_id' => $item['id']]) }}" class="change-button">変更する</a>
+            <div class="payment-section">
+                <label>支払い方法</label>
+                <select id="payment_method" name="payment_method">
+                    <option value="">選択してください</option>
+                    <option value="コンビニ払い">コンビニ払い</option>
+                    <option value="カード払い">カード払い</option>
+                </select>
             </div>
 
-            <input type="text" id="address" name="address" placeholder="〒XXX-YYYY ここには住所と建物が入ります">
-        </div>
+            <hr class="summary-divider">
+
+            <div class="address-section">
+                <div class="address-header">
+                    <label>配送先</label>
+                    <a href="{{ route('purchase.address', ['item_id' => $item->id]) }}" class="change-button">変更する</a>
+                </div>
+
+                <div class="address-display">
+                    <p>〒{{ $profile->post_code }}</p>
+                    <p>{{ $profile->address }}</p>
+                    <p>{{ $profile->building_name }}</p>
+                </div>
+            </div>
+        </form>
     </div>
 
     <div class="summary-wrapper">
@@ -53,15 +61,16 @@
                 <span class="summary-value" id="selected-method">{{ $selectedPayment ?? '未選択' }}</span>
             </div>
         </div>
-        <button class="purchase-button">購入する</button>
-    </div>
 
+        <button type="submit" form="purchase-form" class="purchase-button">購入する</button>
+
+    </div>
 </div>
 @endsection
 
 @section('scripts')
 <script>
-    const paymentSelect = document.getElementById('payment');
+    const paymentSelect = document.getElementById('payment_method');
     const methodDisplay = document.getElementById('selected-method');
 
     paymentSelect.addEventListener('change', function () {

@@ -14,16 +14,21 @@ class TopPageController extends Controller
 
         if ($tab === 'mylist') {
             if (auth()->check()) {
-                $items = auth()->user()->likedItems()->with('user')->get();
+                $query = auth()->user()->likedItems()->with('user');
+
             } else {
                 $items = collect();
+                return view('top', compact('items', 'tab'));
             }
         } else {
-            $items = Item::where('user_id', '!=', auth()->id())
-                ->latest()
-                ->take(12)
-                ->get();
-    }
+            $query = Item::where('user_id', '!=', auth()->id())->latest();
+        }
+
+        if ($request->filled('keyword')) {
+            $query->where('name', 'like', '%' . $request->keyword . '%');
+        }
+
+        $items = $query->paginate(12);
 
     return view('top', compact('items', 'tab'));
     }

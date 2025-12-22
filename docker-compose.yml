@@ -9,6 +9,7 @@ services:
     working_dir: /var/www/html
     depends_on:
       - mysql
+      - mailhog
 
   nginx:
     image: nginx:alpine
@@ -28,8 +29,8 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: fleamarket
+      MYSQL_ROOT_PASSWORD: rootpassword
     volumes:
       - db_data:/var/lib/mysql
 
@@ -42,10 +43,18 @@ services:
       PMA_HOST: mysql
       PMA_PORT: 3306
       PMA_USER: root
-      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      PMA_PASSWORD: rootpassword
 
     depends_on:
       - mysql
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: fleamarket-mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
 
 volumes:
   db_data:

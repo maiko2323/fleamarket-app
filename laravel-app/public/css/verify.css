@@ -1,35 +1,35 @@
 .verify-container {
-    max-width: 600px;
+    max-width: 900px;
     margin: 80px auto;
     padding: 40px;
     text-align: center;
     background-color: #fff;
-    font-size: 18px;
+    font-size: 24px;
     line-height: 1.6;
     font-weight: bold;
 }
 
-.verify-container h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
-}
+
 
 .verify-button {
     display: inline-block;
-    margin-top: 30px;
+    margin-top: 40px;
     padding: 12px 24px;
     background-color: #D9D9D9;
     color: #000000;
     border: 1px solid #333;
-    font-size: 20px;
+    font-size: 24px;
     border-radius: 4px;
     text-decoration: none;
 }
 
 .resend-link {
-    display: block;
+    background: none;
+    border: none;
+    color: #0073CC;
+    font-size: 20px;
+    cursor: pointer;
     margin-top: 40px;
-    text-decoration: none;
-    color: rgb(45, 130, 186);
-    font-size: 16px;
+    display: inline-block;
+    text-align: center;
 }

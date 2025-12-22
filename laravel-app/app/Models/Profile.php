@@ -9,8 +9,27 @@ class Profile extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'user_id';
+    public $incrementing = false;
+    protected $keyType = 'int';
+
+    protected $fillable = [
+        'profile_img',
+        'post_code',
+        'address',
+        'building_name',
+    ];
+
     public function user()
-{
-    return $this->belongsTo(User::class);
-}
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getImageUrlAttribute()
+    {
+        return $this->profile_img
+        ? asset($this->profile_img)
+        : asset('images/default-icon.png');
+    }
+
 }
