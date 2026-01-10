@@ -17,10 +17,9 @@
         <div class="form-group image-row">
             <div class="image-preview">
                 <img id="preview"
-                    src="{{ $profile->profile_img ?? asset('images/default-icon.png') }}"
+                    src="{{ optional($profile)->image_url }}"
                     alt="プロフィール画像"
                     class="profile-icon">
-
             </div>
 
             <div class="form-group image-upload">
