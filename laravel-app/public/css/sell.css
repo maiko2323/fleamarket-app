@@ -122,3 +122,7 @@
     display: block;
     width: 100%;
 }
+
+.error-message {
+    color: #FF5555 !important;
+}

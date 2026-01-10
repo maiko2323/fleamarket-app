@@ -11,61 +11,82 @@
     @csrf
 
     <div class="sell-page">
-    <h2>商品の出品</h2>
-    <div class="image-upload-area">
-        <div class="dashed-box">
-            <button type="button" class="select-image-button">画像を選択する
-            </button>
-            <input type="file" name="item_img" id="item_img" accept="image/*" class="file-input">
-            <img id="preview" class="preview-image">
+        <h2>商品の出品</h2>
+
+        <div class="image-upload-area">
+            <div class="dashed-box">
+                <button type="button" class="select-image-button">画像を選択する</button>
+                <input type="file" name="item_img" id="item_img" accept="image/*" class="file-input">
+                <img id="preview" class="preview-image" alt="">
+                @error('item_img')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
-        <img id="preview" class="preview-image">
-    </div>
 
-    <h3>商品の詳細</h3>
-    <div class="form-group">
-        <label>カテゴリー</label>
-        <div class="category-buttons">
-            @foreach($categories as $category)
-            <input type="checkbox" id="category{{ $category->id }}"
-                name="categories[]"
-                value="{{ $category->id }}">
-            <label for="category{{ $category->id }}">{{ $category->name }}</label>
-            @endforeach
-        </div>
-    </div>
+        <h3>商品の詳細</h3>
 
-    <div class="form-group">
-        <label>商品の状態</label>
-        <select name="condition">
-            <option value="">選択してください</option>
-            <option value="1">良好</option>
-            <option value="2">目立った傷や汚れなし</option>
-            <option value="3">やや傷や汚れあり</option>
-            <option value="4">状態が悪い</option>
-        </select>
-    </div>
-
-    <h3>商品名と説明</h3>
-    <div class="form-main">
         <div class="form-group">
-            <label>商品名</label>
-            <input type="text" name="name">
+            <label>カテゴリー</label>
+            <div class="category-buttons">
+                @foreach($categories as $category)
+                    <input type="checkbox" id="category{{ $category->id }}"
+                        name="categories[]"
+                        value="{{ $category->id }}">
+                    <label for="category{{ $category->id }}">{{ $category->name }}</label>
+                @endforeach
+            </div>
+            @error('categories')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
+        </div>
 
-            <label>ブランド名</label>
-            <input type="text" name="brand">
+        <div class="form-group">
+            <label>商品の状態</label>
+            <select name="condition_id">
+                <option value="">選択してください</option>
+                <option value="1">良好</option>
+                <option value="2">目立った傷や汚れなし</option>
+                <option value="3">やや傷や汚れあり</option>
+                <option value="4">状態が悪い</option>
+            </select>
+            @error('condition_id')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
+        </div>
 
-            <label>商品の説明</label>
-            <textarea name="description"></textarea>
+        <h3>商品名と説明</h3>
 
-            <label>販売価格</label>
-            <input type="number" name="price" placeholder="¥">
+        <div class="form-main">
+            <div class="form-group">
+                <label>商品名</label>
+                <input type="text" name="name">
+                @error('name')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+
+                <label>ブランド名</label>
+                <input type="text" name="brand">
+
+                <label>商品の説明</label>
+                <textarea name="description"></textarea>
+                @error('description')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+
+                <label>販売価格</label>
+                <input type="number" name="price" placeholder="¥">
+                @error('price')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        <button type="submit" class="submit-button">出品する</button>
     </div>
-
-    <button type="submit" class="submit-button">出品する</button>
-</div>
 </form>
 @endsection
+
 
 
 @section('scripts')

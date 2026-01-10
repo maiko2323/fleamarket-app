@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Item;
 use App\Http\Requests\CommentRequest;
-use App\Http\Requests\ItemStoreRequest;
+use App\Http\Requests\ExhibitionRequest;
+
 
 
 class ItemController extends Controller
@@ -54,7 +55,7 @@ class ItemController extends Controller
         return back();
     }
 
-    public function store(ItemStoreRequest $request)
+    public function store(ExhibitionRequest $request)
     {
         $validated = $request->validated();
 
@@ -65,7 +66,7 @@ class ItemController extends Controller
         $item->brand = $request->brand;
         $item->description = $request->description;
         $item->price = $request->price;
-        $item->condition_id = $request->condition;
+        $item->condition_id = $validated['condition_id'];
         $item->item_img = Storage::url($path);
         $item->user_id = auth()->id();
         $item->save();
