@@ -47,10 +47,11 @@
     margin: 70px auto 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    list-style: none;
     gap: 40px;
     padding: 0 20px;
 }
-.item-card {
+.item-card a {
     display: flex;
     flex-direction: column;
     padding: 12px;

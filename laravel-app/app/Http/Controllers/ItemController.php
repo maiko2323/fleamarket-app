@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Item;
+use App\Http\Requests\CommentRequest;
+use App\Http\Requests\ItemStoreRequest;
 
 
 class ItemController extends Controller
@@ -39,7 +41,7 @@ class ItemController extends Controller
 
     public function likes()
     {
-    return $this->belongsToMany(User::class, 'likes', 'item_id', 'user_id');
+        return $this->belongsToMany(User::class, 'likes', 'item_id', 'user_id');
     }
 
     public function mylist()
@@ -48,12 +50,8 @@ class ItemController extends Controller
         return view('items.mylist', compact('items'));
     }
 
-    public function storeComment(Request $request, Item $item)
+    public function storeComment(CommentRequest $request, Item $item)
     {
-        $request->validate([
-            'content' => 'required|string|max:255',
-        ]);
-
         $item->comments()->create([
             'user_id' => auth()->id(),
             'content' => $request->content,
@@ -62,13 +60,9 @@ class ItemController extends Controller
         return back();
     }
 
-    public function store(Request $request)
+    public function store(ItemStoreRequest $request)
     {
-        $request->validate([
-            'item_img' => 'required|image|max:2048',
-            'name' => 'required|string|max:255',
-            'categories' => 'required|array',
-        ]);
+        $validated = $request->validated();
 
         $path = $request->file('item_img')->store('public/item_images');
 
@@ -82,11 +76,9 @@ class ItemController extends Controller
         $item->user_id = auth()->id();
         $item->save();
 
-        if ($request->has('categories')) {
-        $item->categories()->sync($request->categories);
-        }
+        $item->categories()->sync($validated['categories']);
 
-        return redirect()->route('mypage', ['page' => 'sell']);
+        return redirect()->route('mypage.show', ['page' => 'sell']);
     }
 
 }

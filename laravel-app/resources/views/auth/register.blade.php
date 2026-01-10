@@ -7,10 +7,12 @@
 @endsection
 
 @section('content')
-    <div class="register-container">
-        <h2>会員登録</h2>
-        <form method="POST" action="/register">
+<div class="register-container">
+    <h1>会員登録</h1>
+
+    <form method="POST" action="/register">
             @csrf
+
             <div class="form-group">
                 <label for="name">ユーザー名</label>
                 <input type="text" name="name" value="{{ old('name') }}">
@@ -45,8 +47,9 @@
 
             <button type="submit">登録する</button>
         </form>
+
         <div class="register-link">
-            <a href="/login">ログインはこちら</a>
+            <a href="{{ route('login') }}">ログイン</a>
         </div>
     </div>
 @endsection

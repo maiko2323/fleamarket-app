@@ -13,7 +13,7 @@
             <img src="{{ asset($item->item_img) }}" alt="{{ $item->name }}">
 
             <div class="item-info">
-                <h2 class="item-name">{{ $item->name }}</h2>
+                <h1 class="item-name">{{ $item->name }}</h1>
                 <p class="item-price">¥{{ number_format($item->price) }}</p>
             </div>
         </div>
@@ -22,7 +22,7 @@
             @csrf
 
             <div class="payment-section">
-                <label>支払い方法</label>
+                <h2 class="section-title">支払い方法</h2>
                 <select id="payment_method" name="payment_method">
                     <option value="">選択してください</option>
                     <option value="コンビニ払い">コンビニ払い</option>
@@ -34,14 +34,18 @@
 
             <div class="address-section">
                 <div class="address-header">
-                    <label>配送先</label>
+                    <h2 class="section-title">配送先</h2>
                     <a href="{{ route('purchase.address', ['item_id' => $item->id]) }}" class="change-button">変更する</a>
                 </div>
 
                 <div class="address-display">
-                    <p>〒{{ $profile->post_code }}</p>
-                    <p>{{ $profile->address }}</p>
-                    <p>{{ $profile->building_name }}</p>
+                    @if($profile)
+                        <p>〒{{ $profile->post_code }}</p>
+                        <p>{{ $profile->address }}</p>
+                        <p>{{ $profile->building_name }}</p>
+                    @else
+                        <p>配送先が登録されていません。</p>
+                    @endif
                 </div>
             </div>
         </form>

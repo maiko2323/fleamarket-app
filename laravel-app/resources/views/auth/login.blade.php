@@ -8,12 +8,12 @@
 
 @section('content')
     <div class="login-container">
-        <h2>ログイン</h2>
+        <h1>ログイン</h1>
         <form method="POST" action="/login">
             @csrf
 
             @if ($errors->has('login_error'))
-            <div class="error-message">{{ $errors->first('login_error') }}</div>
+                <div class="error-message">{{ $errors->first('login_error') }}</div>
             @endif
 
             <div class="form-group">
@@ -23,6 +23,7 @@
                     <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="form-group">
                 <label for="password">パスワード</label>
                 <input type="password" name="password" id="password">
@@ -30,10 +31,13 @@
                     <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>
+
             <button type="submit">ログインする</button>
+
         </form>
+
         <div class="register-link">
-        <a href="/register">会員登録はこちら</a>
+            <a href="/register">会員登録はこちら</a>
         </div>
     </div>
 @endsection

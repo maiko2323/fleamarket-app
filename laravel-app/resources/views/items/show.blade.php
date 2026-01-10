@@ -14,15 +14,18 @@
 
             @if($item->soldItem)
                 <img src="{{ asset('images/soldout.png') }}"
-                alt="soldout"
+                alt="売り切れ"
                 class="soldout-badge">
             @endif
 
         </div>
 
         <div class="item-info">
-            <h2>{{ $item->name }}</h2>
-            <p class="brand">ブランド：{{ $item->brand }}</p>
+            <h1>{{ $item->name }}</h1>
+            <p class="brand">
+                <span class="brand-label">ブランド名</span>
+                <span class="brand-value">{{ $item->brand }}</span>
+            </p>
             <p class="price">¥{{ number_format($item->price) }}（税込）</p>
 
             <div class="item-stats">
@@ -49,27 +52,39 @@
             <a href="{{ route('purchase.show', ['item_id' => $item->id]) }}" class="purchase-button">購入手続きへ</a>
 
             <div class="item-description">
-                <h3>商品説明</h3>
+                <h2>商品説明</h2>
                 <p>{{ $item->description }}</p>
             </div>
 
             <div class="item-info-section">
-                <h3>商品の情報</h3>
-                <ul>
-                    <li>カテゴリー：
-                        @foreach ($item->categories as $category)
-                            <span>{{ $category->name }}</span>
-                        @endforeach
+                <h2>商品の情報</h2>
+                <ul class="item-info-list">
+                    <li class="item-info-row">
+                        <span class="item-info-label">カテゴリー</span>
+                        <span class="item-info-value item-info-chips">
+                            @foreach ($item->categories as $category)
+                                <span class="chip">{{ $category->name }}</span>
+                            @endforeach
+                        </span>
                     </li>
-                    <li>商品の状態：{{ $item->condition->label }}</li>
+
+                    <li class="item-info-row">
+                        <span class="item-info-label">商品の状態</span>
+                        <span class="item-info-value">{{ $item->condition->label }}</span>
+                    </li>
                 </ul>
             </div>
 
             <div class="item-comments">
-                <h3>コメント ({{ $item->comments->count() }})</h3>
+                <h2>コメント ({{ $item->comments->count() }})</h2>
                 @foreach ($item->comments as $comment)
                     <div class="comment-block">
-                        <img src="{{ $comment->user->profile->image_url }}" alt="ユーザーアイコン" class="comment-icon">
+                        @php
+                            $profileImage = optional($comment->user->profile)->image_url ?? asset('images/default-icon.png');
+                        @endphp
+
+                        <img src="{{ $profileImage }}" alt="ユーザーアイコン" class="comment-icon">
+
                         <div class="comment-content">
                             <strong>{{ $comment->user->name }}</strong><br>
                             <span>{{ $comment->content }}</span>
@@ -77,7 +92,7 @@
                     </div>
                 @endforeach
 
-                <h4 class="comment-form-title">商品へのコメント</h4>
+                <h3 class="comment-form-title">商品へのコメント</h3>
 
                 <form method="POST" action="{{ route('comment.store', ['item' => $item->id]) }}">
                     @csrf

@@ -8,40 +8,39 @@
 </head>
 <body>
     <div class="container">
-    <header class="header-bar">
-        <a href="{{ route('top') }}">
-        <img src="{{ asset('images/logo.svg') }}" alt="COACHTECHロゴ" class="logo">
-        </a>
+        <header class="header-bar">
+            <a href="{{ route('top') }}">
+                <img src="{{ asset('images/logo.svg') }}" alt="COACHTECHロゴ" class="logo">
+            </a>
 
-        @if (!Request::is('login') && !Request::is('register') && !Request::is('verify'))
-
-            <form action="{{ route('top') }}" method="GET" class="search-form">
-                <input type="text" name="keyword"
+            @if (!Request::is('login') && !Request::is('register') && !Request::is('verify'))
+                <form action="{{ route('top') }}" method="GET" class="search-form">
+                    <input type="text"
+                    name="keyword"
                     value="{{ request('keyword') }}"
                     placeholder="なにをお探しですか？"
                     class="search-input">
-            </form>
+                </form>
 
-
-            <div class="header-links">
+            <nav class="header-links">
                 @if(Auth::check())
                     <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                         @csrf
                         <button type="submit" class="logout-button">ログアウト</button>
                     </form>
                 @else
-                    <a href="/login">ログイン</a>
+                    <a href="{{ route('login') }}">ログイン</a>
                 @endif
 
-                <a href="/mypage">マイページ</a>
-
-                <a href="/sell" class="post-button">出品</a>
-            </div>
+                <a href="{{ route('mypage.show') }}">マイページ</a>
+                <a href="{{ route('sell.create') }}" class="post-button">出品</a>
+            </nav>
         @endif
     </header>
 
     @yield('content')
     </div>
+
     @yield('scripts')
 </body>
 </html>

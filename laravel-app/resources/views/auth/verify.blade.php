@@ -13,15 +13,17 @@
 
     <form method="POST" action="{{ route('verification.send') }}">
         @csrf
+
         <button type="submit" class="verify-button">
         認証はこちらから
         </button>
+
     </form>
 
     @if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
     @endif
 
     <form method="POST" action="{{ route('verification.send') }}">

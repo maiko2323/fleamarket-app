@@ -8,7 +8,6 @@
 
 
 @section('content')
-
     <div class="tabs">
         <a href="{{ route('top', ['keyword' => request('keyword')]) }}"
             class="tab {{ $tab !== 'mylist' ? 'active' : '' }}">おすすめ
@@ -20,23 +19,23 @@
     </div>
 
     @if($items->isNotEmpty())
-        <div class="item-grid">
+        <ul class="item-grid">
             @foreach ($items as $item)
-                <a href="{{ route('item.show', ['item_id' => $item['id']]) }}" class="item-card">
-                    <div class="item-image">
-                        <img src="{{ $item->item_img }}" alt="{{ $item->name }}">
+                <li class="item-card">
+                    <a href="{{ route('item.show', ['item_id' => $item['id']]) }}">
+                        <div class="item-image">
+                            <img src="{{ $item->item_img }}" alt="{{ $item->name }}">
+                            @if($item->soldItem)
+                                <img src="{{ asset('images/soldout.png') }}"
+                                    alt="売り切れ"
+                                    class="soldout-badge">
+                            @endif
+                        </div>
 
-                        @if($item->soldItem)
-                            <img src="{{ asset('images/soldout.png') }}"
-                            alt="soldout"
-                            class="soldout-badge">
-                        @endif
-
-                    </div>
-
-                    <div class="item-name">{{ $item['name'] }}</div>
-                </a>
+                        <div class="item-name">{{ $item->name }}</div>
+                    </a>
+                </li>
             @endforeach
-        </div>
+        </ul>
     @endif
 @endsection

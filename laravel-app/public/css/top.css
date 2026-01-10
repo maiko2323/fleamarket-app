@@ -32,14 +32,15 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
+    list-style: none;
     padding: 0 20px;
 }
 
-.item-card {
+.item-card a {
     display: flex;
     flex-direction: column;
     padding: 12px;
-    align-items: center;
+    align-items: flex-start;
     text-decoration: none;
     color: #000000;
     position: relative;

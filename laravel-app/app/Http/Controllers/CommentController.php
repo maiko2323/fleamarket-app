@@ -9,16 +9,9 @@ use App\Models\Item;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Item $item)
+    public function store(CommentRequest $request, Item $item)
     {
-        if (!auth()->check()) {
-        return back();
-        }
-
-        $validated = $request->validate(
-            (new CommentRequest())->rules(),
-            (new CommentRequest())->messages()
-        );
+        $validated = $request->validated();
 
         $item->comments()->create([
             'user_id' => auth()->id(),

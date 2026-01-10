@@ -12,14 +12,13 @@ class TopPageController extends Controller
     {
         $tab = $request->query('tab');
 
-        if ($tab === 'mylist') {
-            if (auth()->check()) {
-                $query = auth()->user()->likedItems()->with('user');
+        if ($tab === 'mylist' && !auth()->check()) {
+            $items = collect();
+            return view('top', compact('items', 'tab'));
+        }
 
-            } else {
-                $items = collect();
-                return view('top', compact('items', 'tab'));
-            }
+        if ($tab === 'mylist') {
+            $query = auth()->user()->likedItems()->with('user');
         } else {
             $query = Item::where('user_id', '!=', auth()->id())->latest();
         }
@@ -30,7 +29,7 @@ class TopPageController extends Controller
 
         $items = $query->paginate(12);
 
-    return view('top', compact('items', 'tab'));
+        return view('top', compact('items', 'tab'));
     }
 
 

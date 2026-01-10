@@ -7,7 +7,7 @@ Laravel × Docker で構築したフリマアプリです。ユーザー登録�
 ### Docker ビルド
 
 ```bash
-git clone <https://github.com/maiko2323/fleamarket-app.git>
+git clone https://github.com/maiko2323/fleamarket-app.git
 cd fleamarket-app
 docker-compose up -d --build
 ```
@@ -57,7 +57,9 @@ STRIPE_KEY=Stripe の公開可能キー
 
 STRIPE_SECRET=Stripe の公開可能キー
 
-### 開発環境
+### 開発環境（動作確認用URL）
+
+※ Web ポートは通常 8080 を使用しますが、他アプリとの競合を避けるため本環境では 8083 を使用しています。
 
 [商品一覧(トップページ)](http://localhost:8083/)
 
@@ -100,6 +102,12 @@ nginx 1.29.3
 Docker 28.3.2 / docker-compose 2.39.1
 
 jQuery 3.7.1
+
+Stripe（決済）
+
+Laravel Fortify（認証機能）
+
+FormRequest（バリデーション）
 
 ## ER 図
 

@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\SoldItem;
 use App\Http\Requests\AddressRequest;
+use App\Http\Requests\PurchaseRequest;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as CheckoutSession;
 
@@ -24,14 +25,21 @@ class PurchaseController extends Controller
         $item = Item::findOrFail($item_id);
         $profile = auth()->user()->profile;
 
-        return view('items.address', compact('item', 'profile'));
+        $title = $profile ? '住所の変更' : '住所の登録';
+        $buttonLabel = $profile ? '更新する' : '登録する';
+
+        return view('items.address', compact('item', 'profile', 'title', 'buttonLabel'));
     }
 
-        public function complete(Request $request, $item_id)
+    public function complete(PurchaseRequest $request, $item_id)
     {
-        $validated = $request->validate([
-        'payment_method' => 'required|in:コンビニ払い,カード払い',
-    ]);
+        if (!auth()->user()->profile || !auth()->user()->profile->post_code) {
+        return redirect()
+            ->route('purchase.address', ['item_id' => $item_id])
+            ->with('error', '購入前に配送先を登録してください。');
+        }
+
+        $validated = $request->validated();
 
         $item = Item::findOrFail($item_id);
 
@@ -49,36 +57,38 @@ class PurchaseController extends Controller
 
         Stripe::setApiKey(config('services.stripe.secret'));
 
-    $paymentMethodTypes = $validated['payment_method'] === 'カード払い'
-        ? ['card']
-        : ['konbini'];
+        $paymentMethodTypes = $validated['payment_method'] === 'カード払い'
+            ? ['card']
+            : ['konbini'];
 
-    $session = CheckoutSession::create([
-        'mode' => 'payment',
-        'payment_method_types' => $paymentMethodTypes,
-        'line_items' => [[
-            'quantity' => 1,
-            'price_data' => [
-                'currency' => 'jpy',
-                'unit_amount' => (int) $item->price,
-                'product_data' => [
-                    'name' => $item->name,
+        $session = CheckoutSession::create([
+            'mode' => 'payment',
+            'payment_method_types' => $paymentMethodTypes,
+            'line_items' => [[
+                'quantity' => 1,
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'unit_amount' => (int) $item->price,
+                    'product_data' => [
+                        'name' => $item->name,
+                    ],
                 ],
-            ],
-        ]],
-        'success_url' => route('top'),
-        'cancel_url'  => route('top'),
-    ]);
+            ]],
+            'success_url' => route('top'),
+            'cancel_url'  => route('top'),
+        ]);
 
-    return redirect($session->url);
-}
+        return redirect($session->url);
+    }
+
     public function updateAddress(AddressRequest $request, $item_id)
     {
-    $validated = $request->validated();
+        $validated = $request->validated();
 
-    $profile = auth()->user()->profile;
-    $profile->update($validated);
+        auth()->user()->profile()->updateOrCreate([], $validated);
 
-    return back()->with('success', '住所を更新しました');
+        return redirect()
+            ->route('purchase.show', ['item_id' => $item_id])
+            ->with('success', '配送先を保存しました。');
     }
 }
