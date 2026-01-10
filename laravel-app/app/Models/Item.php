@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\SoldItem;
+use App\Models\Comment;
+use App\Models\Category;
+use App\Models\Condition;
 
 class Item extends Model
 {
@@ -25,17 +30,10 @@ class Item extends Model
         return $this->belongsTo(User::class);
     }
 
-
-    public function likedByUsers()
-    {
-        return $this->belongsToMany(User::class, 'likes');
-    }
-
     public function likes()
     {
         return $this->belongsToMany(User::class, 'likes', 'item_id', 'user_id');
     }
-
 
     public function soldItem()
     {

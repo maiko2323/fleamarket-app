@@ -5,16 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
-use App\Models\Profile;
 use App\Http\Requests\ProfileRequest;
-
-
 
 class UserController extends Controller
 {
     public function showVerifyPage()
     {
-        $user = auth()->user();
+        $user = Auth::user();
 
         $verifyUrl = URL::temporarySignedRoute(
             'verification.verify',

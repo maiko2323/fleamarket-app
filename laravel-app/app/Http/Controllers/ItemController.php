@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Item;
 use App\Http\Requests\CommentRequest;
@@ -37,11 +36,6 @@ class ItemController extends Controller
         }
 
         return back();
-    }
-
-    public function likes()
-    {
-        return $this->belongsToMany(User::class, 'likes', 'item_id', 'user_id');
     }
 
     public function mylist()
