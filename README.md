@@ -7,7 +7,7 @@ Laravel × Docker で構築したフリマアプリです。ユーザー登録�
 ### Docker ビルド
 
 ```bash
-git clone <https://github.com/maiko2323/fleamarket-app.git>
+git clone https://github.com/maiko2323/fleamarket-app.git
 cd fleamarket-app
 docker-compose up -d --build
 ```
