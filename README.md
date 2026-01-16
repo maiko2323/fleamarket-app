@@ -51,11 +51,28 @@ MAIL_FROM_ADDRESS=no-reply@example.com
 
 MAIL_FROM_NAME="FleaMarket App"
 
+
+## テスト環境設定（PHPUnit）
+
+#### テスト用データベース
+
+`.env.testing` に以下を設定してください。
+
+DB_HOST=mysql
+
+DB_DATABASE=test_database
+
+DB_USERNAME=root
+
+DB_PASSWORD=rootpassword
+
+
 #### Stripe（テスト環境）
 
 STRIPE_KEY=Stripe の公開可能キー
 
 STRIPE_SECRET=Stripe の公開可能キー
+
 
 ### 開発環境（動作確認用URL）
 
@@ -89,6 +106,7 @@ STRIPE_SECRET=Stripe の公開可能キー
 
 [MAILHOG](http://localhost:8025/)
 
+
 ## 仕様技術（実行環境）
 
 PHP 8.1.33
@@ -108,6 +126,7 @@ Stripe（決済）
 Laravel Fortify（認証機能）
 
 FormRequest（バリデーション）
+
 
 ## ER 図
 

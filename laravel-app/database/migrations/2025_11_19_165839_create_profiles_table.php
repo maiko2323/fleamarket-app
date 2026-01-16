@@ -14,9 +14,9 @@ class CreateProfilesTable extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
-        $table->id('profile_id');
-        $table->unsignedBigInteger('user_id');
-        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        $table->id();
+        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+        $table->unique('user_id');
         $table->string('profile_img')->nullable();
         $table->string('post_code');
         $table->string('address');

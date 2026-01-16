@@ -11,7 +11,9 @@
     @csrf
 
     <div class="sell-page">
-        <h2>商品の出品</h2>
+        <h1>商品の出品</h1>
+
+        <label class="form-label">商品画像</label>
 
         <div class="image-upload-area">
             <div class="dashed-box">
@@ -24,7 +26,7 @@
             </div>
         </div>
 
-        <h3>商品の詳細</h3>
+        <h2>商品の詳細</h2>
 
         <div class="form-group">
             <label>カテゴリー</label>
@@ -55,7 +57,7 @@
             @enderror
         </div>
 
-        <h3>商品名と説明</h3>
+        <h2>商品名と説明</h2>
 
         <div class="form-main">
             <div class="form-group">

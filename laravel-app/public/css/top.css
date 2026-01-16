@@ -27,44 +27,41 @@
 }
 
 .item-grid {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 70px auto 0;
+    padding: 30px 0px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    gap: 60px 70px;
     list-style: none;
-    padding: 0 20px;
 }
 
 .item-card a {
-    display: flex;
-    flex-direction: column;
-    padding: 12px;
-    align-items: flex-start;
+    display: block;
+    padding: 0;
     text-decoration: none;
     color: #000000;
-    position: relative;
 }
 
 .item-image {
     width: 100%;
-    height: 180px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     overflow: hidden;
     position: relative;
-
 }
 
 .item-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .item-name {
-    margin-top: 8px;
-    font-size: 18px;
+    margin-top: 12px;
+    font-size: 14px;
     text-align: left;
-    width: 100%;
 }
 
 .soldout-badge {

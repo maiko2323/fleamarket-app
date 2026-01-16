@@ -31,6 +31,4 @@ class TopPageController extends Controller
 
         return view('top', compact('items', 'tab'));
     }
-
-
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
-use App\Models\Comment;
 use App\Models\Item;
 
 class CommentController extends Controller
@@ -17,7 +16,7 @@ class CommentController extends Controller
             'content' => $validated['content'],
         ]);
 
-        return redirect()->route('item.show', ['item_id' => $item->id]);
+        return redirect()->route('item.show', $item);
     }
 
 }

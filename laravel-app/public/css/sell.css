@@ -6,6 +6,10 @@
     font-family: sans-serif;
 }
 
+.sell-page h1 {
+    text-align: center;
+}
+
 .image-upload-area {
     margin-bottom: 24px;
 }
@@ -30,12 +34,13 @@
     position: relative
 }
 
-.sell-pageh3 {
-    font-size: 20px;
-    padding-bottom: 8px;
-    margin-bottom: 16px;
-    color: #5F5F5F;
+.sell-page h2 {
+    font-size: 22px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     border-bottom: 1px solid #5F5F5F;
+    color: #5F5F5F;
 }
 
 .select-image-button {
@@ -52,27 +57,29 @@
     margin-bottom: 24px;
 }
 
+.form-group input,
+.form-group select {
+    width: 100%;
+    max-width: 800px;
+    font-size: 18px;
+    height: 60px;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    display: block;
+    margin: 10px auto;
+}
+
 .category-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
 
-
 .category-buttons input[type="checkbox"] {
     display: none;
 }
 
-.category-buttons label {
-    background-color: white;
-    border: 1px solid #FF5555;
-    color: #FF5555;
-    padding: 8px 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 14px;
-}
+
 
 .category-buttons input[type="checkbox"]:checked+label {
     background-color: #FF5555;
@@ -81,13 +88,12 @@
 }
 
 .form-main {
+    max-width: 800px;
     margin: 0 auto;
 }
 
 .form-main .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    margin-bottom: 24px;
 }
 
 .form-main label {
@@ -95,22 +101,17 @@
     margin-bottom: 4px;
 }
 
-.form-main input,
-.form-main textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-}
-
-.form-main textarea {
-    resize: vertical;
-    min-height: 100px;
+.form-label {
+    display: block;
+    max-width: 800px;
+    margin: 0 auto 8px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .submit-button {
+    max-width: 800px;
+    margin: 24px auto 0;
     margin-top: 24px;
     background-color: #FF5555;
     color: white;
@@ -125,4 +126,63 @@
 
 .error-message {
     color: #FF5555 !important;
+}
+
+.image-upload-area {
+    max-width: 800px;
+    margin: 0 auto 24px;
+}
+
+.dashed-box {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.category-buttons {
+    max-width: 800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.form-group label {
+    display: block;
+    max-width: 800px;
+    margin: 0 auto 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form-group textarea {
+    width: 100%;
+    max-width: 800px;
+    font-size: 18px;
+    height: 180px;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    display: block;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+}
+
+.sell-page input,
+.sell-page select,
+.sell-page textarea {
+    border: 1px solid #5F5F5F;
+}
+
+.sell-page .dashed-box {
+    border-color: #5F5F5F;
+}
+
+.category-buttons label {
+    background-color: white;
+    border: 1px solid #FF5555;
+    color: #FF5555;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
 }

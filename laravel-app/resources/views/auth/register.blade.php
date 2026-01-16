@@ -49,7 +49,7 @@
         </form>
 
         <div class="register-link">
-            <a href="{{ route('login') }}">ログイン</a>
+            <a href="{{ route('login') }}">ログインはこちら</a>
         </div>
     </div>
 @endsection

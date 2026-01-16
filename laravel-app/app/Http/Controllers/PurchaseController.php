@@ -16,7 +16,6 @@ class PurchaseController extends Controller
         $profile = auth()->user()->profile;
 
         return view('items.purchase', compact('item', 'profile'));
-
     }
 
     public function editAddress($item_id)
@@ -33,9 +32,9 @@ class PurchaseController extends Controller
     public function complete(PurchaseRequest $request, $item_id)
     {
         if (!auth()->user()->profile || !auth()->user()->profile->post_code) {
-        return redirect()
-            ->route('purchase.address', ['item_id' => $item_id])
-            ->with('error', '購入前に配送先を登録してください。');
+            return redirect()
+                ->route('purchase.address', ['item_id' => $item_id])
+                ->with('error', '購入前に配送先を登録してください。');
         }
 
         $validated = $request->validated();

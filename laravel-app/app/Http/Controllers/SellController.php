@@ -11,5 +11,4 @@ class SellController extends Controller
         $categories = Category::all();
         return view('sell.sell', compact('categories'));
     }
-
 }

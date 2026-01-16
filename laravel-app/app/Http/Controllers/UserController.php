@@ -41,10 +41,9 @@ class UserController extends Controller
             $path = $request->file('image')->store('profile_images', 'public');
             $profile->profile_img = '/storage/' . $path;
             $profile->save();
-            }
+        }
 
         return redirect()->route('mypage.show');
-
     }
 
     public function showMypage(Request $request)
@@ -71,7 +70,6 @@ class UserController extends Controller
 
         return view('user.profile', compact('user', 'profile'));
     }
-
 }
 
 

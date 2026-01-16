@@ -35,8 +35,8 @@
                 <a href="{{ route('mypage.show') }}">マイページ</a>
                 <a href="{{ route('sell.create') }}" class="post-button">出品</a>
             </nav>
-        @endif
-    </header>
+            @endif
+        </header>
 
     @yield('content')
     </div>
