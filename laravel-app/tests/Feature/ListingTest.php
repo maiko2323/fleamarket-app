@@ -43,7 +43,7 @@ class ListingTest extends TestCase
             'brand'       => 'テストブランド',
             'description' => 'テスト説明',
             'price'       => 5000,
-            'condition'   => (string) $condition->id,
+            'condition_id' => (string) $condition->id,
             'categories'  => array_map('strval', $categoryIds),
             'item_img'    => $image,
         ];
