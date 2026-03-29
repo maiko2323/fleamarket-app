@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'COACHTECH')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('css')
@@ -13,7 +14,7 @@
                 <img src="{{ asset('images/logo.svg') }}" alt="COACHTECHロゴ" class="logo">
             </a>
 
-            @if (!Request::is('login') && !Request::is('register') && !Request::is('verify'))
+            @if (!Request::is('login') && !Request::is('register') && !Request::is('verify') && !Request::is('transactions/*'))
                 <form action="{{ route('top') }}" method="GET" class="search-form">
                     <input type="text"
                     name="keyword"

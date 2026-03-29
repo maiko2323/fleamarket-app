@@ -1,6 +1,6 @@
 # COACHTECH フリマアプリ
 
-Laravel × Docker で構築したフリマアプリです。ユーザー登録、ログイン、商品出品、検索、コメント、いいね機能などを備えています。
+Laravel × Docker で構築したフリマアプリです。ユーザー登録、ログイン、商品出品、検索、コメント、いいね、取引チャット機能などを備えています。
 
 ## 環境構築
 
@@ -47,10 +47,9 @@ MAIL_HOST=mailhog
 
 MAIL_PORT=1025
 
-MAIL_FROM_ADDRESS=no-reply@example.com
+MAIL_FROM_ADDRESS=test@example.com
 
 MAIL_FROM_NAME="FleaMarket App"
-
 
 ## テスト環境設定（PHPUnit）
 
@@ -66,13 +65,11 @@ DB_USERNAME=root
 
 DB_PASSWORD=rootpassword
 
-
 #### Stripe（テスト環境）
 
 STRIPE_KEY=Stripe の公開可能キー
 
 STRIPE_SECRET=Stripe の公開可能キー
-
 
 ### 開発環境（動作確認用URL）
 
@@ -102,10 +99,13 @@ STRIPE_SECRET=Stripe の公開可能キー
 
 [プロフィール(出品した商品)](http://localhost:8083/mypage?page=sell)
 
+[プロフィール(取引中の商品)](http://localhost:8083/mypage?page=transaction)
+
+[取引チャット画面]（http://localhost:8083/transactions/\*）
+
 [phpMyAdmin](http://localhost:8084/)
 
 [MAILHOG](http://localhost:8025/)
-
 
 ## 仕様技術（実行環境）
 
@@ -127,7 +127,39 @@ Laravel Fortify（認証機能）
 
 FormRequest（バリデーション）
 
-
 ## ER 図
 
 ![ER図](laravel-app/docs/er.png)
+
+## 追加機能
+
+取引チャット機能の実装
+マイページに「取引中の商品」タブを追加
+未読メッセージ数の表示
+取引完了機能
+評価機能の実装
+
+## ユーザーデータ（ダミー）
+
+動作確認用として、以下のユーザーデータを作成しています。
+
+### ユーザー①（出品者）
+
+- 名前：test_user1
+- メールアドレス：user1@example.com
+- パスワード：password123
+- 出品商品：C001〜C005
+
+### ユーザー②（出品者）
+
+- 名前：test_user2
+- メールアドレス：user2@example.com
+- パスワード：password456
+- 出品商品：C006〜C010
+
+### ユーザー③（未紐づけユーザー）
+
+- 名前：test_user3
+- メールアドレス：user3@example.com
+- パスワード：password789
+- 出品・購入なし

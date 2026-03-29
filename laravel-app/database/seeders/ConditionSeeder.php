@@ -16,10 +16,10 @@ class ConditionSeeder extends Seeder
     public function run()
     {
         DB::table('conditions')->insert([
-        ['label' => '良好'],
-        ['label' => '目立った傷や汚れなし'],
-        ['label' => 'やや傷や汚れあり'],
-        ['label' => '状態が悪い'],
-    ]);
+            ['label' => '良好'],
+            ['label' => '目立った傷や汚れなし'],
+            ['label' => 'やや傷や汚れあり'],
+            ['label' => '状態が悪い'],
+        ]);
     }
 }

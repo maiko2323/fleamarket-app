@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCompletedAtToSoldItemsTable extends Migration
+class AddCahtImgToTransactionChatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCompletedAtToSoldItemsTable extends Migration
      */
     public function up()
     {
-        Schema::table('sold_items', function (Blueprint $table) {
-            $table->timestamp('completed_at')->nullable()->after('sold_at');
+        Schema::table('transaction_chats', function (Blueprint $table) {
+            $table->string('chat_img')->nullable()->after('message');
         });
     }
 
@@ -25,8 +25,8 @@ class AddCompletedAtToSoldItemsTable extends Migration
      */
     public function down()
     {
-        Schema::table('sold_items', function (Blueprint $table) {
-            $table->dropColumn('completed_at');
+        Schema::table('transaction_chats', function (Blueprint $table) {
+            $table->dropColumn('chat_img');
         });
     }
 }

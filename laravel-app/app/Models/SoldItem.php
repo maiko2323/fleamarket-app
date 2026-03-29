@@ -21,6 +21,7 @@ class SoldItem extends Model
         'address',
         'building_name',
         'sold_at',
+        'completed_at',
     ];
 
 
@@ -32,6 +33,11 @@ class SoldItem extends Model
     public function item()
     {
         return $this->belongsTo(Item::class);
+    }
+
+    public function transactionChats()
+    {
+        return $this->hasMany(TransactionChat::class);
     }
 }
 

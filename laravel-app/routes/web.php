@@ -8,6 +8,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,27 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::get('/mypage', [UserController::class, 'showMypage'])
     ->middleware(['auth', 'verified'])
     ->name('mypage.show');
+
+// 取引チャット
+Route::get('/transactions/{soldItem}', [TransactionController::class, 'show'])
+    ->middleware(['auth', 'verified'])
+    ->name('transactions.show');
+
+Route::post('/transactions/{soldItem}/messages', [TransactionController::class, 'storeMessage'])
+    ->middleware(['auth', 'verified'])
+    ->name('transactions.messages.store');
+
+Route::patch('/transactions/chats/{chat}', [TransactionController::class, 'update'])
+    ->name('transactions.chats.update');
+
+Route::delete('/transactions/chats/{chat}', [TransactionController::class, 'destroy'])
+    ->name('transactions.chats.destroy');
+
+Route::patch('/transactions/{soldItem}/complete', [TransactionController::class, 'complete'])
+    ->name('transactions.complete');
+
+Route::post('/transactions/{soldItem}/rate', [TransactionController::class, 'rate'])
+    ->name('transactions.rate');
 
 // プロフィール
 Route::get('/mypage/profile', [UserController::class, 'edit'])

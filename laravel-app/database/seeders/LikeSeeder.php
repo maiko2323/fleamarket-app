@@ -16,10 +16,10 @@ class LikeSeeder extends Seeder
     {
         DB::table('likes')->insert([
             ['user_id' => 1, 'item_id' => 9],
-            ['user_id' => 1, 'item_id' => 6],
-            ['user_id' => 2, 'item_id' => 5],
-            ['user_id' => 3, 'item_id' => 3],
-]);
+            ['user_id' => 2, 'item_id' => 3],
+            ['user_id' => 3, 'item_id' => 1],
+            ['user_id' => 3, 'item_id' => 6],
+        ]);
 
     }
 }

@@ -17,11 +17,11 @@ class SoldItemSeeder extends Seeder
     {
         DB::table('sold_items')->insert([
             'item_id' => 1,
-            'buyer_id' => 1,
+            'buyer_id' => 3,
             'payment_method' => 'カード払い',
-            'post_code' => '860-1111',
-            'address' => '熊本県合志市1-1',
-            'building_name' => '未来ビル202',
+            'post_code' => '530-0001',
+            'address' => '大阪府大阪市北区梅田1-1-1',
+            'building_name' => 'グランフロント大阪タワーA 12F',
             'sold_at' => now(),
         ]);
 

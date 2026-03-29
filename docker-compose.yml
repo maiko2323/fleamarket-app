@@ -6,6 +6,7 @@ services:
       args:
         UID: 1000
         GID: 1000
+    user: "1000:1000"
     container_name: fleamarket-app
     volumes:
       - ./laravel-app:/var/www/html
@@ -57,7 +58,6 @@ services:
     ports:
       - "1025:1025"
       - "8025:8025"
-
 
 volumes:
   db_data:

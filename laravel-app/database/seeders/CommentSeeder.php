@@ -17,12 +17,12 @@ class CommentSeeder extends Seeder
         DB::table('comments')->insert([
             [
                 'item_id' => 1,
-                'user_id' => 1,
+                'user_id' => 2,
                 'content' => 'とても良い商品ですね！',
             ],
             [
                 'item_id' => 1,
-                'user_id' => 2,
+                'user_id' => 3,
                 'content' => '購入を検討しています。',
             ],
             [
