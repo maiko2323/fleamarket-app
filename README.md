@@ -101,7 +101,7 @@ STRIPE_SECRET=Stripe の公開可能キー
 
 [プロフィール(取引中の商品)](http://localhost:8083/mypage?page=transaction)
 
-[取引チャット画面]（http://localhost:8083/transactions/\*）
+[取引チャット画面（例: soldItem ID=1）](http://localhost:8083/transactions/1)
 
 [phpMyAdmin](http://localhost:8084/)
 
